@@ -79,8 +79,7 @@ public class ConsoleOutputHandler implements OutputHandler {
 
     @Override
     public void showSimpleMessage(String message) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'showSimpleMessage'");
+        System.out.println(message);
     }
 
 }
