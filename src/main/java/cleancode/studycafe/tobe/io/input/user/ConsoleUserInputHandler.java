@@ -1,4 +1,4 @@
-package cleancode.studycafe.tobe.io.input;
+package cleancode.studycafe.tobe.io.input.user;
 
 import cleancode.studycafe.tobe.exception.AppException;
 import cleancode.studycafe.tobe.model.StudyCafePass;
@@ -7,7 +7,7 @@ import cleancode.studycafe.tobe.model.StudyCafePassType;
 import java.util.List;
 import java.util.Scanner;
 
-public class ConsoleInputHandler implements InputHandler {
+public class ConsoleUserInputHandler implements UserInputHandler {
 
     private static final Scanner SCANNER = new Scanner(System.in);
 
