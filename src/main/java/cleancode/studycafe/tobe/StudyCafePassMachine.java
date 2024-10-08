@@ -1,9 +1,8 @@
 package cleancode.studycafe.tobe;
 
 import cleancode.studycafe.tobe.exception.AppException;
-import cleancode.studycafe.tobe.io.input.user.ConsoleUserInputHandler;
 import cleancode.studycafe.tobe.io.OutputHandler;
-import cleancode.studycafe.tobe.io.input.studycafe.StudyCafeFileHandler;
+import cleancode.studycafe.tobe.io.input.StudyCafeInputHandler;
 import cleancode.studycafe.tobe.model.StudyCafeLockerPass;
 import cleancode.studycafe.tobe.model.StudyCafePass;
 import cleancode.studycafe.tobe.model.StudyCafePassType;
@@ -12,7 +11,7 @@ import java.util.List;
 
 public class StudyCafePassMachine {
 
-    private final ConsoleUserInputHandler inputHandler = new ConsoleUserInputHandler();
+    private final StudyCafeInputHandler inputHandler = new StudyCafeInputHandler();
     private final OutputHandler outputHandler = new OutputHandler();
 
     public void run() {
@@ -33,40 +32,37 @@ public class StudyCafePassMachine {
 
     private void calculatePassOrder(StudyCafePassType studyCafePassType) {
         if (studyCafePassType == StudyCafePassType.HOURLY) {
-            StudyCafeFileHandler studyCafeFileHandler = new StudyCafeFileHandler();
-            List<StudyCafePass> studyCafePasses = studyCafeFileHandler.readStudyCafePasses();
+            List<StudyCafePass> studyCafePasses = inputHandler.readStudyCafePasses();
             List<StudyCafePass> hourlyPasses = studyCafePasses.stream()
-                .filter(studyCafePass -> studyCafePass.getPassType() == StudyCafePassType.HOURLY)
-                .toList();
+                    .filter(studyCafePass -> studyCafePass.getPassType() == StudyCafePassType.HOURLY)
+                    .toList();
             outputHandler.showPassListForSelection(hourlyPasses);
             StudyCafePass selectedPass = inputHandler.getSelectPass(hourlyPasses);
             outputHandler.showPassOrderSummary(selectedPass, null);
         } else if (studyCafePassType == StudyCafePassType.WEEKLY) {
-            StudyCafeFileHandler studyCafeFileHandler = new StudyCafeFileHandler();
-            List<StudyCafePass> studyCafePasses = studyCafeFileHandler.readStudyCafePasses();
+            List<StudyCafePass> studyCafePasses = inputHandler.readStudyCafePasses();
             List<StudyCafePass> weeklyPasses = studyCafePasses.stream()
-                .filter(studyCafePass -> studyCafePass.getPassType() == StudyCafePassType.WEEKLY)
-                .toList();
+                    .filter(studyCafePass -> studyCafePass.getPassType() == StudyCafePassType.WEEKLY)
+                    .toList();
             outputHandler.showPassListForSelection(weeklyPasses);
             StudyCafePass selectedPass = inputHandler.getSelectPass(weeklyPasses);
             outputHandler.showPassOrderSummary(selectedPass, null);
         } else if (studyCafePassType == StudyCafePassType.FIXED) {
-            StudyCafeFileHandler studyCafeFileHandler = new StudyCafeFileHandler();
-            List<StudyCafePass> studyCafePasses = studyCafeFileHandler.readStudyCafePasses();
+            List<StudyCafePass> studyCafePasses = inputHandler.readStudyCafePasses();
             List<StudyCafePass> fixedPasses = studyCafePasses.stream()
-                .filter(studyCafePass -> studyCafePass.getPassType() == StudyCafePassType.FIXED)
-                .toList();
+                    .filter(studyCafePass -> studyCafePass.getPassType() == StudyCafePassType.FIXED)
+                    .toList();
             outputHandler.showPassListForSelection(fixedPasses);
             StudyCafePass selectedPass = inputHandler.getSelectPass(fixedPasses);
 
-            List<StudyCafeLockerPass> lockerPasses = studyCafeFileHandler.readLockerPasses();
+            List<StudyCafeLockerPass> lockerPasses = inputHandler.readLockerPasses();
             StudyCafeLockerPass lockerPass = lockerPasses.stream()
-                .filter(option ->
-                    option.getPassType() == selectedPass.getPassType()
-                        && option.getDuration() == selectedPass.getDuration()
-                )
-                .findFirst()
-                .orElse(null);
+                    .filter(option ->
+                            option.getPassType() == selectedPass.getPassType()
+                                    && option.getDuration() == selectedPass.getDuration()
+                    )
+                    .findFirst()
+                    .orElse(null);
 
             boolean lockerSelection = false;
             if (lockerPass != null) {

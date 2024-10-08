@@ -5,7 +5,7 @@ import cleancode.studycafe.tobe.model.StudyCafePass;
 
 import java.util.List;
 
-public interface StudyCafeInputHandler {
+public interface StudyCafeDataHandler {
 
     List<StudyCafePass> readStudyCafePasses();
 
