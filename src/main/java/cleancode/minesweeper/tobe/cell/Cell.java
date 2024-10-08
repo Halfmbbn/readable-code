@@ -2,17 +2,17 @@ package cleancode.minesweeper.tobe.cell;
 
 public interface Cell {
 
-    boolean isLandMine();
-
-    boolean hasLandMineCount();
+    void open();
 
     void flag();
 
-    void open();
+    boolean isOpened();
+
+    boolean isLandMine();
 
     boolean isChecked();
 
-    boolean isOpened();
+    boolean hasLandMineCount();
 
     CellSnapshot getSnapshot();
 

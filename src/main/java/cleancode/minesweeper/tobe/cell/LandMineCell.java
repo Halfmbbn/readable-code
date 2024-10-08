@@ -5,13 +5,8 @@ public class LandMineCell implements Cell {
     private final CellState cellState = CellState.initialize();
 
     @Override
-    public boolean hasLandMineCount() {
-        return false;
-    }
-
-    @Override
-    public boolean isLandMine() {
-        return true;
+    public void open() {
+        cellState.open();
     }
 
     @Override
@@ -20,8 +15,13 @@ public class LandMineCell implements Cell {
     }
 
     @Override
-    public void open() {
-        cellState.open();
+    public boolean isOpened() {
+        return cellState.isOpened();
+    }
+
+    @Override
+    public boolean isLandMine() {
+        return true;
     }
 
     @Override
@@ -30,8 +30,8 @@ public class LandMineCell implements Cell {
     }
 
     @Override
-    public boolean isOpened() {
-        return cellState.isOpened();
+    public boolean hasLandMineCount() {
+        return false;
     }
 
     @Override

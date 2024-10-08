@@ -3,6 +3,11 @@ package cleancode.minesweeper.tobe.gamelevel;
 public class Advanced implements GameLevel {
 
     @Override
+    public int getRowSize() {
+        return 20;
+    }
+
+    @Override
     public int getColSize() {
         return 24;
     }
@@ -12,9 +17,5 @@ public class Advanced implements GameLevel {
         return 99;
     }
 
-    @Override
-    public int getRowSize() {
-        return 20;
-    }
 
 }

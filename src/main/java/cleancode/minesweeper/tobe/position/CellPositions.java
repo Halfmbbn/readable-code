@@ -7,6 +7,7 @@ import java.util.List;
 import cleancode.minesweeper.tobe.cell.Cell;
 
 public class CellPositions {
+
     private final List<CellPosition> positions;
 
     private CellPositions(List<CellPosition> positions) {
@@ -53,4 +54,5 @@ public class CellPositions {
     private boolean doesNotContain(CellPosition position) {
         return !positions.contains(position);
     }
+
 }

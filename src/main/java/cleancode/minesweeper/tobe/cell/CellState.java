@@ -13,16 +13,12 @@ public class CellState {
         return new CellState(false, false);
     }
 
-    public void flag() {
-        this.isFlagged = true;
-    }
-
     public void open() {
         this.isOpened = true;
     }
 
-    public boolean isChecked() {
-        return isFlagged || isOpened;
+    public void flag() {
+        this.isFlagged = true;
     }
 
     public boolean isOpened() {
@@ -33,4 +29,8 @@ public class CellState {
         return isFlagged;
     }
 
+    public boolean isChecked() {
+        return isFlagged || isOpened;
+    }
+    
 }

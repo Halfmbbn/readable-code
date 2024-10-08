@@ -5,12 +5,32 @@ public class EmptyCell implements Cell {
     private final CellState cellState = CellState.initialize();
 
     @Override
-    public boolean hasLandMineCount() {
-        return false;
+    public void open() {
+        cellState.open();
+    }
+
+    @Override
+    public void flag() {
+        cellState.flag();
+    }
+
+    @Override
+    public boolean isOpened() {
+        return cellState.isOpened();
     }
 
     @Override
     public boolean isLandMine() {
+        return false;
+    }
+
+    @Override
+    public boolean isChecked() {
+        return cellState.isChecked();
+    }
+
+    @Override
+    public boolean hasLandMineCount() {
         return false;
     }
 
@@ -25,23 +45,4 @@ public class EmptyCell implements Cell {
         return CellSnapshot.ofUnchecked();
     }
 
-    @Override
-    public void flag() {
-        cellState.flag();
-    }
-
-    @Override
-    public void open() {
-        cellState.open();
-    }
-
-    @Override
-    public boolean isChecked() {
-        return cellState.isChecked();
-    }
-
-    @Override
-    public boolean isOpened() {
-        return cellState.isOpened();
-    }
 }

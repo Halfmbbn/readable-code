@@ -10,13 +10,8 @@ public class NumberCell implements Cell {
     }
 
     @Override
-    public boolean hasLandMineCount() {
-        return true;
-    }
-
-    @Override
-    public boolean isLandMine() {
-        return false;
+    public void open() {
+        cellState.open();
     }
 
     @Override
@@ -25,8 +20,13 @@ public class NumberCell implements Cell {
     }
 
     @Override
-    public void open() {
-        cellState.open();
+    public boolean isOpened() {
+        return cellState.isOpened();
+    }
+
+    @Override
+    public boolean isLandMine() {
+        return false;
     }
 
     @Override
@@ -35,8 +35,8 @@ public class NumberCell implements Cell {
     }
 
     @Override
-    public boolean isOpened() {
-        return cellState.isOpened();
+    public boolean hasLandMineCount() {
+        return true;
     }
 
     @Override
@@ -49,4 +49,5 @@ public class NumberCell implements Cell {
         }
         return CellSnapshot.ofUnchecked();
     }
+
 }
