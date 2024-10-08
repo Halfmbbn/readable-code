@@ -1,10 +1,10 @@
 package cleancode.minesweeper.tobe.minesweeper.board.position;
 
+import cleancode.minesweeper.tobe.minesweeper.board.cell.Cell;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import cleancode.minesweeper.tobe.minesweeper.board.cell.Cell;
 
 public class CellPositions {
 
