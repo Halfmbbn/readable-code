@@ -1,7 +1,7 @@
-package cleancode.studycafe.tobe.io.input.studycafe;
+package cleancode.studycafe.tobe.io;
 
 import cleancode.studycafe.tobe.model.StudyCafeLockerPass;
-import cleancode.studycafe.tobe.model.pass.StudyCafePass;
+import cleancode.studycafe.tobe.model.StudyCafePass;
 import cleancode.studycafe.tobe.model.StudyCafePassType;
 
 import java.io.IOException;
@@ -10,9 +10,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileInputHandler implements DataInputHandler {
+public class StudyCafeFileHandler {
 
-    @Override
     public List<StudyCafePass> readStudyCafePasses() {
         try {
             List<String> lines = Files.readAllLines(Paths.get("src/main/resources/cleancode/studycafe/pass-list.csv"));
@@ -34,7 +33,6 @@ public class FileInputHandler implements DataInputHandler {
         }
     }
 
-    @Override
     public List<StudyCafeLockerPass> readLockerPasses() {
         try {
             List<String> lines = Files.readAllLines(Paths.get("src/main/resources/cleancode/studycafe/locker.csv"));
